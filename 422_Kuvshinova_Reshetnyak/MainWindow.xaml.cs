@@ -24,5 +24,50 @@ namespace _422_Kuvshinova_Reshetnyak
         {
             InitializeComponent();
         }
+
+        private void Calculate_Click(object sender, RoutedEventArgs e)
+        {
+            if (!double.TryParse(InputX.Text, out double x))
+            {
+                MessageBox.Show("Введите корректное значение для X.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (!double.TryParse(InputY.Text, out double y))
+            {
+                MessageBox.Show("Введите корректное значение для Y.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            Func<double, double> f;
+            if (FunctionSinh.IsChecked == true)
+                f = Math.Sinh;
+            else if (FunctionSquare.IsChecked == true)
+                f = val => Math.Pow(val, 2);
+            else
+                f = Math.Exp;
+
+            double c;
+            if (x - y == 0)
+            {
+                c = Math.Pow(f(x), 2) + Math.Pow(y, 2) + Math.Sin(y);
+            }
+            else if (x - y > 0)
+            {
+                c = Math.Pow(f(x) - y, 2) + Math.Cos(y);
+            }
+            else
+            {
+                c = Math.Pow(y - f(x), 2) + Math.Tan(y);
+            }
+
+            ResultBox.Text = $"Результат: {c:F4}";
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            InputX.Clear();
+            InputY.Clear();
+            ResultBox.Clear();
+        }
     }
 }

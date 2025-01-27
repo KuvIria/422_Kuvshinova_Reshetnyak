@@ -5,8 +5,51 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_422_Kuvshinova_Reshetnyak"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="ПРАКТИЧЕСКАЯ РАБОТА №1" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <!-- Картинка -->
+            <RowDefinition Height="Auto"/>
+            <!-- Ввод X и Y -->
+            <RowDefinition Height="Auto"/>
+            <!-- Выбор функции -->
+            <RowDefinition Height="Auto"/>
+            <!-- Кнопки -->
+            <RowDefinition Height="*"/>
+            <!-- Результат -->
+        </Grid.RowDefinitions>
+
+        <!-- Картинка -->
+        <Image x:Name="FunctionImage" Grid.Row="0" Stretch="Uniform" 
+               HorizontalAlignment="Center" VerticalAlignment="Center"
+               Source="Resources/function.jpg"
+               ToolTip="Скриншот математической функции"/>
+
+        <!-- Ввод X и Y -->
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,10,0,10">
+            <Label Content="Введите X:" VerticalAlignment="Center"/>
+            <TextBox x:Name="InputX" Width="100" Margin="5,0" ToolTip="Введите значение X"/>
+            <Label Content="Введите Y:" VerticalAlignment="Center"/>
+            <TextBox x:Name="InputY" Width="100" Margin="5,0" ToolTip="Введите значение Y"/>
+        </StackPanel>
+
+        <!-- Выбор функции -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,10,0,10">
+            <Label Content="Выберите функцию:" VerticalAlignment="Center"/>
+            <RadioButton x:Name="FunctionSinh" Content="sh(x)" IsChecked="True" Margin="5,0" ToolTip="Гиперболический синус"/>
+            <RadioButton x:Name="FunctionSquare" Content="x^2" Margin="5,0" ToolTip="Квадрат числа"/>
+            <RadioButton x:Name="FunctionExp" Content="e^x" Margin="5,0" ToolTip="Экспонента"/>
+        </StackPanel>
+
+        <!-- Кнопки -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,10,0,10">
+            <Button Content="Вычислить" Click="Calculate_Click" Width="100" ToolTip="Рассчитать значение функции"/>
+            <Button Content="Очистить" Click="Clear_Click" Width="100" Margin="10,0,0,0" ToolTip="Очистить поля"/>
+        </StackPanel>
+
+        <!-- Результат -->
+        <TextBox x:Name="ResultBox" Grid.Row="4" IsReadOnly="True" ToolTip="Результат вычислений"
+                 VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Height="100"/>
     </Grid>
 </Window>
