@@ -100,5 +100,8 @@
   <ItemGroup>
     <Resource Include="function.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="calculator.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
