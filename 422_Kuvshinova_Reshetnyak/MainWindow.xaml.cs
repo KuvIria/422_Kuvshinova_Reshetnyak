@@ -62,7 +62,14 @@ namespace _422_Kuvshinova_Reshetnyak
 
             ResultBox.Text = $"Результат: {c:F4}";
         }
-
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var result = MessageBox.Show("Вы уверены, что хотите выйти?", "Подтверждение выхода", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.No)
+            {
+                e.Cancel = true; // Отменить закрытие окна
+            }
+        }
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
             InputX.Clear();
